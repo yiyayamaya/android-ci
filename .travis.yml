@@ -1,0 +1,35 @@
+language: android
+sudo: required
+jdk: oraclejdk8
+before_cache: "-rm -f $HOME/.gradle/caches/modules-2/modules-2.lock -rm -fr $HOME/.gradle/caches/*/plugin-resolution/"
+cache: 
+directories: "-$HOME/.gradle/caches/ -$HOME/.gradle/wrapper/"
+env: 
+global:
+- ANDROID_API=24
+- EMULATOR_API=21
+- ANDROID_BUILD_TOOLS=24.0.2
+- ADB_INSTALL_TIMEOUT=5
+android: 
+components:
+- tools
+- platform-tools
+- build-tools-$ANDROID_BUILD_TOOLS
+- android-$ANDROID_API
+- android-$EMULATOR_API_LEVEL
+- extra-google-m2repository
+- extra-android-m2repository
+- addon-google_apis-google-19
+- sys-img-armeabi-v7a-addon-google_apis-google-$ANDROID_API_LEVEL
+- sys-img-armeabi-v7a-addon-google_apis-google-$EMULATOR_API_LEVEL
+licenses:
+- android-sdk-preview-license-.+
+- android-sdk-license-.+
+- google-gdk-license-.+
+deploy:
+  provider: releases
+  api_key:
+    secure: gUarJxQVFpARrfKO6ssbbZhvRYEMFzc4DWgsuMnkhgysAMC6/xSZhjutWgDJKRQObXYzTDMcFR9r/ftPJ9uFLt5MkNnE1ugEh/zPdIkacy/HpF6YumspgyEpv4PulztDMeQeU6iX1fjeTyx1onwj1+SXB/oKgQGi66Ob/9JelSFApYUi/IrLFtqB7x+sF+/EaRSqi4t0N4p71I9J7hFud9pn36/eWB6qanSm10rru1PXqVaZOIKVnyg7VmxlKY0UUReiBs8BGpYm5OXIobOmeBvOe6ERPSI4+ewlstLt/Y8l3vEqC7wvL4FYpUPGq/rcnU9Ox5/07To/NxWnimiiYXMzhhqj+rQ/TIrxYHa3xJkT8blul8zeT58w211R/rsPeBVlHpGq6KgFrp2Wb6BrfBdU7k6eBnUdRkvMmmY0e9NIKLdu8JkWT8e0LeJ6nPRXX8H2oEmqbgzRKk0guL34ErdSXnnQPc4lCkhAi8aWQGm6b7E6fJoPx1iJmomtrPp8sLRaz7TWuIJ+b8SRDmEwhk7mAxm6Jx+qLseN+gBQuY/eIO5mWxIXnyihIdLsSoo+vYLil6HssupT7GYU0wKQ7yXF1VskIbh6v/SWZmr9YUaQI+RAXMJbLc7HK7arJ4jldtotSWzH0gwFazRO5iWv3IeqrT1V5edfvrVVjHd5xCg=
+  file: android-ci
+  on:
+    repo: yiyayamaya/android-ci
