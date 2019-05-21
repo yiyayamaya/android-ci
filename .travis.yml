@@ -45,10 +45,10 @@ script:
 
 deploy:
   provider: releases
-  file: android-ci
+  file: android-ci.apk
   skip_cleanup: true
 on:
-  repo: githubUsername/Repository
+  repo: yiyayamaya/android-ci
   tags: true
   jdk: oraclejdk8
 api_key:
